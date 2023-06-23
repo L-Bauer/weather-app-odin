@@ -1,1 +1,3 @@
-console.log("Bye");
+import { getCityInfo } from "./api";
+
+getCityInfo("London");
