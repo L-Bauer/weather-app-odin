@@ -1,12 +1,14 @@
 const apiKey = "12708416b49647a2b90145252232306";
+const currentWeatherUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=`;
 
-async function getCurrentWeather(Place) {
+async function getWeatherData(url, Place) {
   // Get the current weather for the location
   let response;
+  const currentUrl = url + Place;
   // fetch weather data from weather api
   try {
     response = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${Place}`,
+      currentUrl,
       {
         mode: "cors",
         method: "GET",
@@ -25,6 +27,11 @@ async function getCurrentWeather(Place) {
     console.log(`HTTP Response Code: ${response?.status}`);
   }
   return placeData;
+}
+
+function getCurrentWeather(location) {
+  const currentWeatherData = getWeatherData(currentWeatherUrl, location);
+  return currentWeatherData;
 }
 
 export { getCurrentWeather };
