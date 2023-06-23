@@ -1,7 +1,7 @@
-import { getCityInfo } from "./api";
+import { getCurrentWeather } from "./api";
 
-const info = await getCityInfo("London");
+const info = await getCurrentWeather("London");
 console.log(info);
 
-const second = await getCityInfo("L12Lds");
+const second = await getCurrentWeather("L12Lds");
 console.log(second);
