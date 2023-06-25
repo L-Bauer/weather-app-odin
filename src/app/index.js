@@ -1,7 +1,4 @@
-import { getCurrentWeather, getForecastWeather } from "./api";
-
-const info = await getCurrentWeather("London");
-console.log(info);
+import { getForecastWeather } from "./api";
 
 const forecast = await getForecastWeather("Chicago");
 console.log(forecast);

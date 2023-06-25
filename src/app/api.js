@@ -1,6 +1,7 @@
 const apiKey = "12708416b49647a2b90145252232306";
 
 function weatherUrl(api) {
+  // Create url to get different data from weather api
   const url = `http://api.weatherapi.com/v1/${api}.json?key=${apiKey}&q=`;
   return url;
 }
@@ -33,16 +34,15 @@ async function getWeatherData(url, Place) {
   return placeData;
 }
 
-function getCurrentWeather(location) {
-  const currentWeatherUrl = weatherUrl("current");
-  const currentWeatherData = getWeatherData(currentWeatherUrl, location);
-  return currentWeatherData;
+function cleanWeatherData(data) {
+  // Pass
 }
 
-function getForecastWeather(location) {
+async function getForecastWeather(location) {
+  // Get forecast and current weather
   const forecastUrl = weatherUrl("forecast");
   const forecastWeatherData = getWeatherData(forecastUrl, location);
   return forecastWeatherData;
 }
 
-export { getCurrentWeather, getForecastWeather };
+export { getForecastWeather };
