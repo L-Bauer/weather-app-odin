@@ -9,7 +9,7 @@ function weatherUrl(api) {
 async function getWeatherData(url, Place) {
   // Get the current weather for the location
   let response;
-  const currentUrl = url + Place;
+  const currentUrl = `${url + Place}&days=3&aqi=yes&alerts=no`;
   // fetch weather data from weather api
   try {
     response = await fetch(
@@ -32,10 +32,6 @@ async function getWeatherData(url, Place) {
     console.log(`HTTP Response Code: ${response?.status}`);
   }
   return placeData;
-}
-
-function cleanWeatherData(data) {
-  // Pass
 }
 
 async function getForecastWeather(location) {
