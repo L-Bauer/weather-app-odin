@@ -2,15 +2,19 @@ import { getForecastWeather } from "./api";
 
 const submitSearch = document.querySelector("#search-form");
 
-// const forecast = await getForecastWeather("Fond du Lac");
-// console.log(forecast);
+let forecast;
+
+function views(data) {
+  console.log(data.current.temp_f);
+  console.log(data.current.condition.text);
+  console.log(data.current.feelslike_f);
+}
 
 submitSearch.addEventListener("submit", async (e) => {
-  // const data = await getForecastWeather(input);
   e.preventDefault();
   const form = new FormData(submitSearch);
-  const location = form.get("location");
-  console.log(location);
-  const forecast = await getForecastWeather(location);
+  const city = form.get("location");
+  forecast = await getForecastWeather(city);
   console.log(forecast);
+  views(forecast);
 });
