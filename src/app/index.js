@@ -8,10 +8,13 @@ let forecast
 function mainView (weatherData) {
   const location = weatherData.location.name
   const region = weatherData.location.region
-  main.innerHTML = location
-  const p = document.createElement('p')
-  p.innerText = region
-  main.appendChild(p)
+
+  const regionHTML = document.createElement('p')
+  const locationHTML = document.createElement('p')
+  regionHTML.innerText = region
+  locationHTML.innerText = location
+  main.appendChild(locationHTML)
+  main.appendChild(regionHTML)
 }
 
 submitSearch.addEventListener('submit', async (e) => {
