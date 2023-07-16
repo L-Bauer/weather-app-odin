@@ -1,26 +1,17 @@
 import { getForecastWeather } from './api'
 
 const submitSearch = document.querySelector('#search-form')
-const main = document.querySelector('main')
+const main = document.querySelector('.main')
 
 let forecast
 
-function views (data) {
-  console.log(data.current.temp_f)
-  console.log(data.current.condition.text)
-  console.log(data.current.feelslike_f)
-}
-
-const viewFactory = (weatherData) => {
-  const mainView = () => {
-    const location = weatherData.location.name
-    const region = weatherData.location.region
-    // const p = document.createElement('p')
-    // main.appendChild(p.textContent = location)
-    console.log(main)
-    console.log(region)
-  }
-  return { mainView }
+function mainView (weatherData) {
+  const location = weatherData.location.name
+  const region = weatherData.location.region
+  main.innerHTML = location
+  const p = document.createElement('p')
+  p.innerText = region
+  main.appendChild(p)
 }
 
 submitSearch.addEventListener('submit', async (e) => {
@@ -28,7 +19,6 @@ submitSearch.addEventListener('submit', async (e) => {
   const form = new FormData(submitSearch)
   const city = form.get('location')
   forecast = await getForecastWeather(city)
-  const viewsFact = viewFactory(forecast)
-  viewsFact.mainView()
-  views(forecast)
+  mainView(forecast)
+  console.log(forecast)
 })
