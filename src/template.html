@@ -6,12 +6,17 @@
     <title>Weather App Dev</title>
   </head>
   <body>
-      <h1>Hello</h1>
+    <div class="row top">
       <form id="search-form">
         <label for="location">Location:</label>
         <input type="text" class="search-box-input" id="location" name="location">
         <input type="submit" class="submit-search-btn" value="Submit Form"><br>
       </form>
-      <div class="main view"></div>
+      <div class="main view">
+        <h2 class="h2 location"></h2>
+        <h2 class="h2 region"></h2>
+        <p class="temp current"></p>
+      </div>
+    </div>
   </body>
 </html>
